@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# Namuy Learning — Full-Stack Learning Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An earlier full-stack implementation of **Namuy Learning**, developed as a custom web application using **React, Flask, and PostgreSQL**.
 
-## Available Scripts
+The project explores the architecture of an online learning platform with user authentication, student profiles, course-related interfaces, multilingual support, account management, two-factor authentication, and other learning-platform functionality.
 
-In the project directory, you can run:
+> **Project status:** Legacy / paused development
+>
+> This repository represents an earlier custom-built version of Namuy Learning.  
+> The current production platform has since evolved to a WordPress-based architecture.
 
-### `npm start`
+🌐 **Current Namuy Learning website:**  
+https://namuylearning.com/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Overview
 
-### `npm test`
+This project was created to explore how Namuy Learning could operate as a custom full-stack web application rather than relying on a CMS.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The application separates the platform into multiple layers:
 
-### `npm run build`
+- A React single-page application
+- A Python/Flask REST API
+- PostgreSQL persistence
+- JWT-based authentication
+- Email-based two-factor authentication
+- User profile and account management
+- Multilingual user interfaces
+- An experimental Node.js / Socket.IO real-time server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The repository reflects a practical attempt to build the different layers of an educational platform and connect frontend, backend, authentication, database, and user-management functionality.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tech Stack
 
-### `npm run eject`
+### Frontend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **React 18**
+- **JavaScript**
+- **React Router**
+- **Axios**
+- **React Bootstrap**
+- **Bootstrap 5**
+- **CSS Modules**
+- **i18next**
+- **react-i18next**
+- **Framer Motion**
+- **Swiper**
+- **Font Awesome**
+- **React Icons**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Python**
+- **Flask**
+- **Flask-CORS**
+- **Flask-SQLAlchemy**
+- **Flask-Migrate**
+- **Flask-Mail**
+- **PyJWT**
+- **bcrypt**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Database
 
-## Learn More
+- **PostgreSQL**
+- **SQLAlchemy**
+- **pg8000**
+- **psycopg2**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Real-Time / Experimental Services
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Node.js**
+- **Express**
+- **Socket.IO**
+- **JSON Web Tokens**
 
-### Code Splitting
+### Development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Git**
+- **GitHub**
+- **npm / Yarn**
+- **Create React App**
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Architecture
 
-### Making a Progressive Web App
+```text
+                         Namuy Learning
+                               │
+              ┌────────────────┴────────────────┐
+              │                                 │
+              ▼                                 ▼
+      React Frontend                      Flask Backend
+      localhost:3000                     localhost:3001
+              │                                 │
+              │ Axios / REST API                │
+              └──────────────►──────────────────┤
+                                                │
+                                   ┌────────────┴────────────┐
+                                   │                         │
+                                   ▼                         ▼
+                              PostgreSQL                Email Services
+                                                          / 2FA
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+              React Frontend
+                     │
+                     │ Socket.IO
+                     ▼
+            Experimental Node.js
+             Real-Time Server
+              localhost:4000
